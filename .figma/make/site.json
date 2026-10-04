@@ -1,0 +1,11 @@
+{
+  "title": "Happy 27th Birthday Bianca!",
+  "description": "Interactive birthday site featuring a Japanese-style vending machine that reveals personalized photos, messages, and surprises with virtual coins.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

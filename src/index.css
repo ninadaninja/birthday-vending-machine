@@ -1,0 +1,802 @@
+@import url("https://fonts.googleapis.com/css2?family=Gaegu:wght@400;700&family=Nunito:wght@500;700;900&display=swap");
+@import "tailwindcss";
+
+:root {
+  font-family: "Nunito", sans-serif;
+  color: #3e3531;
+  background: #f8eddb;
+  font-synthesis: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button {
+  font: inherit;
+}
+
+button:focus-visible {
+  outline: 4px solid #3e3531;
+  outline-offset: 3px;
+}
+
+.birthday-page {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  padding: 42px 20px 48px;
+  background-color: #f8eddb;
+  background-image: radial-gradient(#e7c34f 1.2px, transparent 1.2px);
+  background-size: 25px 25px;
+}
+
+.birthday-page::before,
+.birthday-page::after {
+  position: absolute;
+  content: "";
+  width: 170px;
+  height: 170px;
+  border: 3px solid rgba(62, 53, 49, 0.2);
+  border-radius: 43% 57% 48% 52%;
+  pointer-events: none;
+}
+
+.birthday-page::before {
+  left: -76px;
+  top: 210px;
+  transform: rotate(21deg);
+}
+
+.birthday-page::after {
+  right: -80px;
+  top: 510px;
+  transform: rotate(-24deg);
+}
+
+.page-heading {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto 20px;
+  text-align: center;
+}
+
+.eyebrow {
+  margin: 0 0 2px;
+  color: #c94f59;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.page-heading h1 {
+  margin: 0;
+  font-family: "Gaegu", cursive;
+  font-size: clamp(36px, 8vw, 58px);
+  font-weight: 700;
+  line-height: 1;
+  transform: rotate(-1deg);
+}
+
+.heading-date {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin: 5px 0 0;
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.heading-date strong {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  place-items: center;
+  border: 2px solid #3e3531;
+  border-radius: 50%;
+  color: #c94f59;
+  font-size: 14px;
+  letter-spacing: 0;
+  transform: rotate(4deg);
+}
+
+.vending-machine {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 660px);
+  margin: 0 auto;
+  padding: 11px 13px 24px;
+  border: 3px solid #3e3531;
+  border-radius: 31px 31px 18px 18px;
+  background: rgb(91, 154, 179);
+  box-shadow:
+    8px 10px 0 #3e3531,
+    inset 4px 4px 0 rgba(255, 255, 255, 0.25);
+}
+
+.machine-top {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  height: 54px;
+  color: #fff9eb;
+  font-family: "Gaegu", cursive;
+  font-size: clamp(20px, 5vw, 30px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-shadow: 2px 2px 0 #a73d48;
+}
+
+.machine-top__flower {
+  color: #f4d45f;
+  font-size: 31px;
+  line-height: 1;
+}
+
+.machine-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 132px;
+  gap: 11px;
+}
+
+.products-panel {
+  padding: 12px;
+  border: 3px solid #3e3531;
+  border-radius: 13px;
+  background: #bee0db;
+  box-shadow: inset 4px 4px 0 rgba(255, 255, 255, 0.42);
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.product {
+  position: relative;
+  grid-column: span 2;
+  min-width: 0;
+  padding: 6px 6px 8px;
+  border: 2px solid #3e3531;
+  border-radius: 9px;
+  background: #fff9eb;
+  color: #3e3531;
+  cursor: pointer;
+  box-shadow: 2px 3px 0 rgba(62, 53, 49, 0.75);
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease;
+}
+
+.product:hover {
+  transform: translateY(-3px) rotate(-0.5deg);
+  box-shadow: 3px 6px 0 rgba(62, 53, 49, 0.7);
+}
+
+.product:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 1px 0 rgba(62, 53, 49, 0.7);
+}
+
+.product__window {
+  display: grid;
+  width: 76%;
+  aspect-ratio: 4 / 5;
+  margin-inline: auto;
+  place-items: center;
+  overflow: hidden;
+  border: 2px solid #3e3531;
+  border-radius: 6px 8px 5px 7px;
+  background: color-mix(in srgb, var(--product-accent) 22%, #fff);
+}
+
+.product__window svg {
+  width: 88%;
+  height: 88%;
+}
+
+.product__window svg path,
+.product__window svg rect,
+.product__window svg circle {
+  stroke: #3e3531;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.product__window img,
+.surprise-card__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product__label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  margin-top: 6px;
+  font-family: "Gaegu", cursive;
+  font-size: clamp(14px, 2.5vw, 19px);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.product__label > span:last-child {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.product__number {
+  display: grid;
+  flex: 0 0 25px;
+  width: 25px;
+  height: 22px;
+  place-items: center;
+  border: 1.5px solid #3e3531;
+  border-radius: 50%;
+  background: var(--product-accent);
+  color: #fff;
+  font-family: "Nunito", sans-serif;
+  font-size: 8px;
+  text-shadow: 1px 1px #3e3531;
+}
+
+.product__price {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  padding: 1px 5px;
+  border: 1.5px solid #3e3531;
+  border-radius: 10px;
+  background: #fff9eb;
+  font-size: 8px;
+  font-weight: 900;
+}
+
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  padding: 13px 9px;
+  border: 3px solid #3e3531;
+  border-radius: 13px;
+  background: rgb(71, 192, 195);
+  box-shadow: inset 4px 4px 0 rgba(255, 255, 255, 0.3);
+}
+
+.brand-mark {
+  display: flex;
+  align-items: baseline;
+  color: #fff9eb;
+  font-family: "Gaegu", cursive;
+  font-size: 27px;
+  font-weight: 700;
+  line-height: 1;
+  text-shadow: 2px 2px 0 #b86735;
+  transform: rotate(-4deg);
+}
+
+.brand-mark small {
+  font-size: 13px;
+}
+
+.balance-display {
+  width: 100%;
+  margin-top: 12px;
+  padding: 7px 5px;
+  border: 2px solid #3e3531;
+  border-radius: 6px;
+  background: #3e3531;
+  color: #8ee6ab;
+  text-align: center;
+  box-shadow: inset 0 0 0 3px #594c46;
+}
+
+.balance-display span {
+  display: block;
+  color: #d6d0b7;
+  font-size: 7px;
+  font-weight: 900;
+  letter-spacing: 0.15em;
+}
+
+.balance-display strong {
+  font-family: monospace;
+  font-size: 21px;
+  letter-spacing: 0.02em;
+}
+
+.coin-slot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 16px 0 11px;
+  font-size: 8px;
+  font-weight: 900;
+}
+
+.coin-slot span {
+  display: block;
+  width: 34px;
+  height: 7px;
+  border: 2px solid #3e3531;
+  border-radius: 5px;
+  background: #6a5850;
+}
+
+.insert-button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 4px;
+  border: 2px solid #3e3531;
+  border-radius: 9px;
+  background: #fff9eb;
+  color: #3e3531;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 900;
+  line-height: 1.05;
+  box-shadow: 2px 3px 0 #3e3531;
+  transition: transform 120ms ease;
+}
+
+.insert-button:hover {
+  transform: translateY(-2px);
+}
+
+.insert-button:active {
+  transform: translate(2px, 2px);
+  box-shadow: none;
+}
+
+.insert-button svg {
+  width: 28px;
+  fill: #f4d45f;
+  stroke: #3e3531;
+  stroke-width: 2;
+}
+
+.insert-button span,
+.insert-button strong {
+  display: block;
+}
+
+.insert-button strong {
+  margin-top: 3px;
+  color: #c94f59;
+  font-size: 15px;
+}
+
+.tiny-note {
+  margin: auto 0 2px;
+  padding-top: 10px;
+  font-family: "Gaegu", cursive;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1;
+  text-align: center;
+}
+
+.machine-status {
+  display: flex;
+  min-height: 32px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 11px 0;
+  padding: 5px 12px;
+  border: 2px dashed rgba(62, 53, 49, 0.65);
+  border-radius: 8px;
+  background: rgba(255, 249, 235, 0.25);
+  color: #fff9eb;
+  font-family: "Gaegu", cursive;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.status-light {
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border: 1px solid #3e3531;
+  border-radius: 50%;
+  background: #8ee6ab;
+  box-shadow: 0 0 0 2px rgba(142, 230, 171, 0.25);
+}
+
+.collection-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+}
+
+.collection-area p {
+  margin: 0;
+  color: #fff9eb;
+  font-family: "Gaegu", cursive;
+  font-size: 15px;
+  transform: rotate(-2deg);
+}
+
+.collection-slot {
+  display: grid;
+  width: 190px;
+  height: 49px;
+  place-items: center;
+  border: 3px solid #3e3531;
+  border-radius: 8px 8px 14px 14px;
+  background: #7f3840;
+  box-shadow: inset 0 8px 0 #542e32;
+}
+
+.collection-slot span {
+  margin-top: 7px;
+  color: #d58a8e;
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+}
+
+.machine-feet {
+  position: absolute;
+  right: 35px;
+  bottom: -18px;
+  left: 35px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.machine-feet span {
+  width: 65px;
+  height: 18px;
+  border: 3px solid #3e3531;
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+  background: #b84d56;
+}
+
+.page-note {
+  position: relative;
+  z-index: 1;
+  margin: 32px 0 0;
+  font-family: "Gaegu", cursive;
+  font-size: 17px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.modal-backdrop {
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  overflow-y: auto;
+  padding: 24px;
+  background: rgba(52, 43, 39, 0.68);
+  backdrop-filter: blur(5px);
+  animation: fade-in 180ms ease both;
+}
+
+.surprise-card {
+  position: relative;
+  width: min(100%, 490px);
+  padding: 30px 34px 32px;
+  border: 3px solid #3e3531;
+  border-radius: 22px 27px 20px 25px;
+  background: #fff9eb;
+  box-shadow: 9px 11px 0 #3e3531;
+  text-align: center;
+  animation: dispense 380ms cubic-bezier(0.2, 0.8, 0.2, 1.15) both;
+}
+
+.surprise-card::before {
+  position: absolute;
+  content: "";
+  inset: 10px;
+  border: 2px dashed color-mix(in srgb, var(--product-accent) 70%, #3e3531);
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+.surprise-card__kicker {
+  position: relative;
+  margin: 0 0 10px;
+  color: var(--product-accent);
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+}
+
+.surprise-card__art {
+  position: relative;
+  display: grid;
+  width: 170px;
+  height: auto;
+  margin: 0 auto;
+  aspect-ratio: 4 / 5;
+  place-items: center;
+  overflow: hidden;
+  border: 2px solid #3e3531;
+  border-radius: 49% 51% 45% 55%;
+  background: color-mix(in srgb, var(--product-accent) 24%, #fff);
+  transform: rotate(-2deg);
+}
+
+.surprise-card__art svg {
+  width: 90%;
+  height: 90%;
+}
+
+.surprise-card__art svg * {
+  stroke: #3e3531;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.surprise-card h2 {
+  position: relative;
+  margin: 17px 0 8px;
+  font-family: "Gaegu", cursive;
+  font-size: 38px;
+  line-height: 1;
+}
+
+.surprise-card__copy {
+  position: relative;
+  max-width: 380px;
+  margin: 0 auto;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.replace-note {
+  position: relative;
+  margin: 16px 0 0;
+  color: #796b64;
+  font-size: 10px;
+}
+
+.replace-note code {
+  font-weight: 900;
+}
+
+.close-button {
+  position: absolute;
+  z-index: 2;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border: 2px solid #3e3531;
+  border-radius: 50%;
+  background: var(--product-accent);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #3e3531;
+}
+
+.close-button span {
+  position: absolute;
+  top: 15px;
+  left: 7px;
+  width: 17px;
+  height: 2px;
+  background: #3e3531;
+  transform: rotate(45deg);
+}
+
+.close-button span:last-child {
+  transform: rotate(-45deg);
+}
+
+.is-shaking {
+  animation: shake 420ms ease;
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0) rotate(0);
+  }
+  25% {
+    transform: translateX(-6px) rotate(-0.5deg);
+  }
+  50% {
+    transform: translateX(6px) rotate(0.5deg);
+  }
+  75% {
+    transform: translateX(-3px) rotate(-0.25deg);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes dispense {
+  from {
+    opacity: 0;
+    transform: translateY(-28px) rotate(2deg) scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(0) scale(1);
+  }
+}
+
+@media (max-width: 580px) {
+  .birthday-page {
+    padding: 26px 12px 38px;
+  }
+
+  .page-heading {
+    margin-bottom: 14px;
+  }
+
+  .vending-machine {
+    padding: 8px 8px 21px;
+    border-radius: 24px 24px 14px 14px;
+    box-shadow:
+      5px 7px 0 #3e3531,
+      inset 3px 3px 0 rgba(255, 255, 255, 0.25);
+  }
+
+  .machine-top {
+    height: 45px;
+    gap: 7px;
+  }
+
+  .machine-top__flower {
+    font-size: 23px;
+  }
+
+  .machine-body {
+    grid-template-columns: minmax(0, 1fr) 88px;
+    gap: 7px;
+  }
+
+  .products-panel {
+    padding: 7px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .product {
+    padding: 4px 4px 6px;
+    box-shadow: 1px 2px 0 rgba(62, 53, 49, 0.75);
+  }
+
+  .product__window {
+    aspect-ratio: 1.5;
+  }
+
+  .product__label {
+    gap: 3px;
+    margin-top: 4px;
+  }
+
+  .product__number {
+    flex-basis: 20px;
+    width: 20px;
+    height: 18px;
+    font-size: 7px;
+  }
+
+  .product__price {
+    top: 6px;
+    right: 6px;
+    padding: 0 3px;
+    font-size: 7px;
+  }
+
+  .control-panel {
+    padding: 9px 5px;
+  }
+
+  .brand-mark {
+    font-size: 22px;
+  }
+
+  .balance-display {
+    margin-top: 8px;
+    padding: 5px 2px;
+  }
+
+  .balance-display strong {
+    font-size: 16px;
+  }
+
+  .coin-slot {
+    flex-direction: column;
+    gap: 3px;
+    margin: 10px 0 8px;
+  }
+
+  .coin-slot span {
+    width: 29px;
+  }
+
+  .insert-button {
+    flex-direction: column;
+    gap: 3px;
+    padding: 6px 2px;
+    font-size: 8px;
+  }
+
+  .insert-button svg {
+    width: 23px;
+  }
+
+  .insert-button strong {
+    font-size: 13px;
+  }
+
+  .tiny-note {
+    font-size: 9px;
+  }
+
+  .machine-status {
+    margin: 8px 0;
+    font-size: 14px;
+  }
+
+  .collection-area {
+    gap: 8px;
+  }
+
+  .collection-area p {
+    max-width: 100px;
+    font-size: 12px;
+  }
+
+  .collection-slot {
+    width: 140px;
+    height: 42px;
+  }
+
+  .surprise-card {
+    padding: 28px 22px 27px;
+  }
+
+  .surprise-card h2 {
+    font-size: 32px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
