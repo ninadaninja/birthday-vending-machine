@@ -4,6 +4,11 @@ An interactive birthday website made for my sister, Bianca, on her
 27th birthday. Inspired by Japanese vending machines, it dispenses
 family photos, memories, a birthday letter, advice, and wishes.
 
+## Screenshots
+
+### Vending Machine
+![Birthday vending machine with photos and surprises](screenshots/vending-machine.png)
+
 ## Features
 
 - Gift opening screen with a birthday greeting
