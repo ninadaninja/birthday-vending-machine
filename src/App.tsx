@@ -269,6 +269,9 @@ export default function App() {
   const [selected, setSelected] = useState<Product | null>(null);
   const [message, setMessage] = useState("Insert a coin and choose a surprise!");
   const [isShaking, setIsShaking] = useState(false);
+  const [introStage, setIntroStage] = useState<
+    "wrapped" | "opened" | "finished"
+  >("wrapped");
 
   const selectProduct = (product: Product) => {
     if (balance < 100) {
@@ -292,7 +295,59 @@ export default function App() {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [selected]);
 
+  if (introStage !== "finished") {
   return (
+    <main className="birthday-intro">
+      <p className="intro-caption">A little gift from Ate Nina ♡</p>
+
+      {introStage === "wrapped" ? (
+        <>
+          <button
+            type="button"
+            className="gift-button"
+            onClick={() => setIntroStage("opened")}
+            aria-label="Unwrap your birthday gift"
+          >
+            <span className="gift-emoji" aria-hidden="true">
+              🎁
+            </span>
+          </button>
+
+          <p>Tap your gift to unwrap it!</p>
+        </>
+      ) : (
+        <div className="birthday-reveal">
+          <span className="birthday-sparkles" aria-hidden="true">
+            ✨ 🎉 ✨
+          </span>
+
+          <h1>Happy 27th Birthday, Bianca!</h1>
+          <p>There’s a little something waiting for you…</p>
+
+          <button
+            type="button"
+            className="intro-enter-button"
+            onClick={() => setIntroStage("finished")}
+          >
+            Open your gift ♡
+          </button>
+        </div>
+      )}
+
+      <button
+        type="button"
+        className="intro-skip"
+        onClick={() => setIntroStage("finished")}
+      >
+        Skip intro
+      </button>
+    </main>
+  );
+}
+
+  return (
+
+
     <main className="birthday-page">
       <div className="doodle-cloud cloud-one" />
       <div className="doodle-cloud cloud-two" />

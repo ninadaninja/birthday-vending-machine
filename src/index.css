@@ -800,3 +800,142 @@ button:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
+
+.birthday-intro {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 32px 20px;
+  text-align: center;
+  background: #fff5e9;
+  color: #593e43;
+}
+
+.intro-caption {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.gift-button {
+  display: grid;
+  place-items: center;
+  width: 200px;
+  height: 200px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.gift-emoji {
+  display: block;
+  font-size: 140px;
+  line-height: 1;
+  animation: gift-wiggle 2s ease-in-out infinite;
+}
+
+.gift-button--opened {
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  animation: gift-disappear 0.5s ease forwards;
+}
+
+.birthday-reveal {
+  max-width: 600px;
+  animation: birthday-appear 0.7s ease both;
+  animation-delay: 0.5s;
+}
+
+.birthday-reveal h1 {
+  margin: 16px 0;
+  font-size: clamp(2rem, 7vw, 3.5rem);
+  line-height: 1.15;
+  color: #c14f68;
+}
+
+.birthday-reveal p {
+  line-height: 1.6;
+}
+
+.birthday-sparkles {
+  font-size: 2rem;
+}
+
+.intro-enter-button {
+  margin-top: 16px;
+  padding: 14px 24px;
+  border: 0;
+  border-radius: 999px;
+  background: #c14f68;
+  color: white;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.intro-skip {
+  padding: 10px;
+  border: 0;
+  background: transparent;
+  color: #795b60;
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.birthday-intro button:focus-visible {
+  outline: 3px solid #593e43;
+  outline-offset: 5px;
+}
+
+@keyframes gift-wiggle {
+  0%, 70%, 100% {
+    transform: rotate(0);
+  }
+  78% {
+    transform: rotate(-7deg);
+  }
+  86% {
+    transform: rotate(7deg);
+  }
+  94% {
+    transform: rotate(-4deg);
+  }
+}
+
+@keyframes gift-disappear {
+  from {
+    height: 200px;
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    height: 0;
+    opacity: 0;
+    transform: scale(1.25);
+  }
+}
+
+@keyframes birthday-appear {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gift-emoji,
+  .gift-button--opened,
+  .birthday-reveal {
+    animation: none;
+  }
+}
